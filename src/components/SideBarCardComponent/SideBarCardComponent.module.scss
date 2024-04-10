@@ -1,0 +1,25 @@
+.sideBarCardComponentSkin {
+    background:url(../../assets/bg-sidebar-desktop.svg); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.sideBarCardComponentTextSkin{
+    text-align: justify;
+}
+.sideBarCardButtonSkin{
+    border-radius: 70%;
+    color: #FFF;
+    border: 1px solid #FFF;
+    margin-top: 0.4rem;
+    margin-right: 0.4rem;
+}
+.sideBarCardListSkin{
+    background-color: unset;
+    border: unset;
+    color: #FFF;
+}
+.sidebarCardSubtextSkin{
+    color:#A0B9C8;
+}
