@@ -5,11 +5,8 @@ import sideBarClass from "./SideBarCardComponent.module.scss";
 function SideBarCardComponent() {
   return (
     <>
-      <Card
-        style={{ width: "20rem", height: "40rem" }}
-        className={sideBarClass.sideBarCardComponentSkin}
-      >
-        <Card.Body>
+      <Card className={sideBarClass.sideBarCardComponentSkin}>
+        <Card.Body className={sideBarClass.sidebarCardBodySkin}>
           <ListGroup
             as="ol"
             className={sideBarClass.sideBarCardComponentTextSkin}
