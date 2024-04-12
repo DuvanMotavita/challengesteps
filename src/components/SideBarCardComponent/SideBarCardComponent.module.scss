@@ -18,6 +18,12 @@
     border: 1px solid #FFF;
     margin-top: 0.4rem;
     margin-right: 0.4rem;
+    background: unset;
+}
+.sideBarCardButtonSkinActive{
+    color: var(--bs-btn-active-color);
+    background-color: var(--bs-btn-active-bg);
+    border-color: var(--bs-btn-active-border-color);
 }
 .sideBarCardListSkin{
     background-color: unset;

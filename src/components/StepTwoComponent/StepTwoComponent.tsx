@@ -6,10 +6,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import * as formik from "formik";
 import * as yup from "yup";
-import stepOneClass from "./StepOneComponent.module.scss";
+import stepTwoClass from "./StepTwoComponent.module.scss";
 import { Container } from "react-bootstrap";
 
-function StepOneComponent(props: any) {
+function StepTwoComponent(props: any) {
   const { Formik } = formik;
 
   const schema = yup.object().shape({
@@ -20,16 +20,13 @@ function StepOneComponent(props: any) {
 
   return (
     <>
-      <div className={stepOneClass.containerTitleSkin}>
-        <h2>Personal Info</h2>
-        <p>Please provide your name, email address, and phone number.</p>
+      <div className={stepTwoClass.containerTitleSkinStepTwo}>
+        <h2>Select Your Plan</h2>
+        <p>You have the option of monthly or yearly billing.</p>
       </div>
       <Formik
         validationSchema={schema}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          props.subscribeHandeler(2);
-        }}
+        onSubmit={console.log}
         initialValues={{
           name: "",
           emailAddress: "",
@@ -38,7 +35,7 @@ function StepOneComponent(props: any) {
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Row className={stepOneClass.rowSkin}>
+            <Row className={stepTwoClass.rowSkinStepTwo}>
               {" "}
               <Form.Group
                 as={Col}
@@ -64,7 +61,7 @@ function StepOneComponent(props: any) {
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <Row className={stepOneClass.rowSkin}>
+            <Row className={stepTwoClass.rowSkinStepTwo}>
               {" "}
               <Form.Group
                 as={Col}
@@ -91,7 +88,7 @@ function StepOneComponent(props: any) {
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <Row className={stepOneClass.rowSkin}>
+            <Row className={stepTwoClass.rowSkinStepTwo}>
               <Form.Group
                 as={Col}
                 md="12"
@@ -119,13 +116,26 @@ function StepOneComponent(props: any) {
                 </InputGroup>
               </Form.Group>
             </Row>
-            <Row className={stepOneClass.rowSubmitButton}>
-              <Button
-                className={stepOneClass.containerSubmitButton}
-                type="submit"
-              >
-                Next Step
-              </Button>
+            <Row>
+              <Col className={stepTwoClass.containerBackButtonStepTwo}>
+                <Button
+                  className={`${stepTwoClass.backButtonStepTwo} `}
+                  type="button"
+                  onClick={(e) => {
+                    props.subscribeHandeler(1);
+                  }}
+                >
+                  Go Back
+                </Button>
+              </Col>
+              <Col className={stepTwoClass.containerSubmitButtonStepTwo}>
+                <Button
+                  className={stepTwoClass.submitButtonStepTwoStyle}
+                  type="submit"
+                >
+                  Next Step
+                </Button>
+              </Col>
             </Row>
           </Form>
         )}
@@ -134,4 +144,4 @@ function StepOneComponent(props: any) {
   );
 }
 
-export default StepOneComponent;
+export default StepTwoComponent;

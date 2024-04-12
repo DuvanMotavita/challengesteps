@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Badge, Button, Card, ListGroup } from "react-bootstrap";
 import sideBarClass from "./SideBarCardComponent.module.scss";
 
-function SideBarCardComponent() {
+function SideBarCardComponent(props: any) {
   return (
     <>
       <Card className={sideBarClass.sideBarCardComponentSkin}>
@@ -17,7 +17,10 @@ function SideBarCardComponent() {
             >
               <Button
                 variant="info"
-                className={sideBarClass.sideBarCardButtonSkin}
+                className={`${sideBarClass.sideBarCardButtonSkin}  ${props.styleOne}`}
+                onClick={(e) => {
+                  props.subscribeHandeler(1);
+                }}
               >
                 1
               </Button>
@@ -34,7 +37,10 @@ function SideBarCardComponent() {
             >
               <Button
                 variant="info"
-                className={sideBarClass.sideBarCardButtonSkin}
+                className={`${sideBarClass.sideBarCardButtonSkin} ${props.styleTwo}`}
+                onClick={(e) => {
+                  props.subscribeHandeler(2);
+                }}
               >
                 2
               </Button>
@@ -52,6 +58,9 @@ function SideBarCardComponent() {
               <Button
                 variant="info"
                 className={sideBarClass.sideBarCardButtonSkin}
+                onClick={(e) => {
+                  props.subscribeHandeler(3);
+                }}
               >
                 3
               </Button>
@@ -69,6 +78,9 @@ function SideBarCardComponent() {
               <Button
                 variant="info"
                 className={sideBarClass.sideBarCardButtonSkin}
+                onClick={(e) => {
+                  props.subscribeHandeler(4);
+                }}
               >
                 4
               </Button>
