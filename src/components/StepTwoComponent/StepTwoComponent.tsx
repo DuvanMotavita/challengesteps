@@ -13,23 +13,47 @@ import StepTwoCards from "../StepTwoCards/StepTwoCards";
 function StepTwoComponent(props: any) {
   return (
     <>
-      <div className={stepTwoClass.containerTitleSkinStepTwo}>
-        <h2>Select Your Plan</h2>
-        <p>You have the option of monthly or yearly billing.</p>
-      </div>
-
-      <Row className={stepTwoClass.rowSkinStepTwo}>
-        <Col>
-          <StepTwoCards></StepTwoCards>
-        </Col>
-        <Col>
-          {" "}
-          <StepTwoCards></StepTwoCards>
-        </Col>
-        <Col>
-          <StepTwoCards></StepTwoCards>
-        </Col>
-      </Row>
+      {props.step.step == "two" && (
+        <>
+          <div className={stepTwoClass.containerTitleSkinStepTwo}>
+            <h2>Select Your Plan</h2>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+          <Row className={stepTwoClass.rowSkinStepTwo}>
+            <Col>
+              <StepTwoCards></StepTwoCards>
+            </Col>
+            <Col>
+              {" "}
+              <StepTwoCards></StepTwoCards>
+            </Col>
+            <Col>
+              <StepTwoCards></StepTwoCards>
+            </Col>
+          </Row>
+          <Row>
+            <Col className={stepTwoClass.containerBackButtonStepTwo}>
+              <Button
+                className={`${stepTwoClass.backButtonStepTwo} `}
+                type="button"
+                onClick={(e) => {
+                  props.subscribeHandeler(1);
+                }}
+              >
+                Go Back
+              </Button>
+            </Col>
+            <Col className={stepTwoClass.containerSubmitButtonStepTwo}>
+              <Button
+                className={stepTwoClass.submitButtonStepTwoStyle}
+                type="submit"
+              >
+                Next Step
+              </Button>
+            </Col>
+          </Row>
+        </>
+      )}
     </>
   );
 }

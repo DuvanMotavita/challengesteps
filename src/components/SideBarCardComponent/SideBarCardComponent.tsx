@@ -17,7 +17,9 @@ function SideBarCardComponent(props: any) {
             >
               <Button
                 variant="info"
-                className={`${sideBarClass.sideBarCardButtonSkin}  ${props.styleOne}`}
+                className={`${sideBarClass.sideBarCardButtonSkin}  ${
+                  props.step.step == "one" ? props.step.style : ""
+                }`}
                 onClick={(e) => {
                   props.subscribeHandeler(1);
                 }}
@@ -37,7 +39,9 @@ function SideBarCardComponent(props: any) {
             >
               <Button
                 variant="info"
-                className={`${sideBarClass.sideBarCardButtonSkin} ${props.styleTwo}`}
+                className={`${sideBarClass.sideBarCardButtonSkin} ${
+                  props.step.step == "two" ? props.step.style : ""
+                }`}
                 onClick={(e) => {
                   props.subscribeHandeler(2);
                 }}

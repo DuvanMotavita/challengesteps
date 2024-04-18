@@ -6,34 +6,34 @@ import StepOneComponent from "../StepOneComponent/StepOneComponent";
 import StepTwoComponent from "../StepTwoComponent/StepTwoComponent";
 
 function CardSection() {
-  const [showStepOne, setShowStepOne] = useState(true);
-  const [showStepTwo, setShowStepTwo] = useState(false);
-  const [styleOne, setStyleOne] = useState("active");
-  const [styleTwo, setStyleTwo] = useState("");
-  const [styleThree, setStyleThree] = useState("");
-  const [styleFour, setStyleFour] = useState("");
+  const [step, setStep] = useState({
+    style: "active",
+    step: "one",
+  });
+
   const subscribeHandeler = (number: number) => {
     switch (number) {
       case 1:
-        setShowStepOne(true);
-        setShowStepTwo(false);
-        setStyleOne("active");
-        setStyleTwo("");
+        setStep({ ...step, step: "one" });
         break;
       case 2:
-        setShowStepOne(false);
-        setShowStepTwo(true);
-        setStyleOne("");
-        setStyleTwo("active");
+        setStep({ ...step, step: "two" });
         break;
       default:
-        setShowStepOne(true);
-        setShowStepTwo(false);
-        setStyleOne("active");
-        setStyleTwo("");
+        setStep({ ...step, step: "one" });
         break;
     }
   };
+
+  const widgetHandler = () => {
+    return (
+      <>
+        <StepOneComponent subscribeHandeler={subscribeHandeler} step={step} />
+        <StepTwoComponent subscribeHandeler={subscribeHandeler} step={step} />
+      </>
+    );
+  };
+
   return (
     <>
       <Card>
@@ -41,30 +41,13 @@ function CardSection() {
           <Col>
             <SideBarCardComponent
               subscribeHandeler={subscribeHandeler}
-              styleOne={styleOne}
-              styleTwo={styleTwo}
+              step={step}
             ></SideBarCardComponent>
           </Col>
-          {showStepOne && (
-            <Col>
-              {" "}
-              <Card.Body>
-                <StepOneComponent
-                  subscribeHandeler={subscribeHandeler}
-                ></StepOneComponent>
-              </Card.Body>
-            </Col>
-          )}
-          {showStepTwo && (
-            <Col>
-              {" "}
-              <Card.Body>
-                <StepTwoComponent
-                  subscribeHandeler={subscribeHandeler}
-                ></StepTwoComponent>
-              </Card.Body>
-            </Col>
-          )}
+          <Col>
+            {" "}
+            <Card.Body>{widgetHandler()}</Card.Body>
+          </Col>
         </Row>
       </Card>
     </>
