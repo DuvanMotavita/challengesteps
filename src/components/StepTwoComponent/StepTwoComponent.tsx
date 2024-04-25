@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -11,6 +11,16 @@ import { Container } from "react-bootstrap";
 import StepTwoCards from "../StepTwoCards/StepTwoCards";
 
 function StepTwoComponent(props: any) {
+  const returnCorrectCard = (cardNumber: any) => {
+    return (
+      <>
+        <Col>
+          <StepTwoCards index={cardNumber}></StepTwoCards>
+        </Col>
+      </>
+    );
+  };
+
   return (
     <>
       {props.step.step == "two" && (
@@ -20,15 +30,22 @@ function StepTwoComponent(props: any) {
             <p>You have the option of monthly or yearly billing.</p>
           </div>
           <Row className={stepTwoClass.rowSkinStepTwo}>
+            {returnCorrectCard(1)}
+            {returnCorrectCard(2)}
+            {returnCorrectCard(3)}
+          </Row>
+          <Row>
             <Col>
-              <StepTwoCards></StepTwoCards>
+              <Form.Label htmlFor="custom-switch">Monthly</Form.Label>
             </Col>
             <Col>
-              {" "}
-              <StepTwoCards></StepTwoCards>
+              <Form.Check // prettier-ignore
+                type="switch"
+                id="custom-switch"
+              />
             </Col>
             <Col>
-              <StepTwoCards></StepTwoCards>
+              <Form.Label htmlFor="custom-switch">Yearly</Form.Label>
             </Col>
           </Row>
           <Row>
