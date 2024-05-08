@@ -1,12 +1,12 @@
 import Card from "react-bootstrap/Card";
-import StepTwoCard from "./StepTwoCards.module.scss";
+import planInfoCard from "./PlanInfoCards.module.scss";
 import Image from "react-bootstrap/Image";
 import ProIcon from "./CustomProIcon";
 import ArcadeIcon from "./CustomArcadeIcon";
 import AdvanceIcon from "./CustomAdvanceIcon";
 import { useEffect, useState } from "react";
 
-function TextExample(props: any) {
+function PlanInfoCards(props: any) {
   const [cardData, setCardData] = useState({
     index: 1,
     title: "Arcade",
@@ -69,7 +69,7 @@ function TextExample(props: any) {
     }
   };
   return (
-    <Card className={StepTwoCard.cardSkinStepTwo}>
+    <Card className={planInfoCard.cardSkinStepTwo}>
       {selectIcon(props.index)}
       <Card.Body>
         <Card.Title>{cardData.title}</Card.Title>
@@ -80,4 +80,4 @@ function TextExample(props: any) {
   );
 }
 
-export default TextExample;
+export default PlanInfoCards;

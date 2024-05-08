@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import SideBarCardComponent from "../SideBarCardComponent/SideBarCardComponent";
-import StepOneComponent from "../StepOneComponent/StepOneComponent";
-import StepTwoComponent from "../StepTwoComponent/StepTwoComponent";
+import PersonalInfoComponent from "../PersonaInfoComponent/PersonalnfoComponent";
+import PlanInfoComponent from "../PlanInfoComponent/PlanInfoComponent";
+import SelectionCardComponent from "../SelectionCardComponent/SelectionCardComponent";
 
 function CardSection() {
   const [step, setStep] = useState({
     style: "active",
-    step: "one",
+    step: "personalInfo",
   });
 
   const subscribeHandeler = (number: number) => {
     switch (number) {
       case 1:
-        setStep({ ...step, step: "one" });
+        setStep({ ...step, step: "personalInfo" });
         break;
       case 2:
-        setStep({ ...step, step: "two" });
+        setStep({ ...step, step: "planInfo" });
         break;
       default:
-        setStep({ ...step, step: "one" });
+        setStep({ ...step, step: "personalInfo" });
         break;
     }
   };
@@ -28,8 +29,7 @@ function CardSection() {
   const widgetHandler = () => {
     return (
       <>
-        <StepOneComponent subscribeHandeler={subscribeHandeler} step={step} />
-        <StepTwoComponent subscribeHandeler={subscribeHandeler} step={step} />
+        <SelectionCardComponent step={step} />
       </>
     );
   };
