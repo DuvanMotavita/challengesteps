@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -9,15 +9,23 @@ import * as yup from "yup";
 import PersonalInfoClass from "./PersonalnfoComponent.module.scss";
 import { Container } from "react-bootstrap";
 import ButtonHandlerComponent from "../ButtonHandlerComponent/ButtonHandlerComponent";
+import HandlePersonalInfoHook from "../../hooks/HandlePersonalInfoHook";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store/store";
 
 function PersonalInfoComponent(props: any) {
   const { Formik } = formik;
-
+  const personal = HandlePersonalInfoHook();
   const schema = yup.object().shape({
     name: yup.string().required(),
     emailAddress: yup.string().email().required(),
     phoneNumber: yup.number().required(),
   });
+  const personalData = useSelector((state: any) => state.personal.data);
+
+  useEffect(() => {
+    personal.getPersonalInfoStorage();
+  }, []);
 
   return (
     <>
@@ -29,12 +37,14 @@ function PersonalInfoComponent(props: any) {
         validationSchema={schema}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
+          personal.setPersonalInfoStorage(values);
+          personal.getPersonalInfoStorage();
           document.getElementById("planInfoButton")?.click();
         }}
         initialValues={{
-          name: "",
-          emailAddress: "",
-          phoneNumber: "",
+          name: personalData.name,
+          emailAddress: personalData.emailAddress,
+          phoneNumber: personalData.phoneNumber,
         }}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
@@ -120,14 +130,6 @@ function PersonalInfoComponent(props: any) {
                 </InputGroup>
               </Form.Group>
             </Row>
-            {/* <Row className={PersonalInfoClass.rowSubmitButton}>
-              <Button
-                className={PersonalInfoClass.containerSubmitButton}
-                type="submit"
-              >
-                Next Step
-              </Button>
-            </Row> */}
             <ButtonHandlerComponent />
           </Form>
         )}
