@@ -9,6 +9,7 @@ import * as yup from "yup";
 import planInfoClass from "./PlanInfoComponent.module.scss";
 import { Container } from "react-bootstrap";
 import PlanInfoCards from "../PlanInfoCards/PlanInfoCards";
+import ButtonHandlerComponent from "../ButtonHandlerComponent/ButtonHandlerComponent";
 
 function PlanInfoComponent(props: any) {
   const returnCorrectCard = (cardNumber: any) => {
@@ -32,7 +33,7 @@ function PlanInfoComponent(props: any) {
         {returnCorrectCard(2)}
         {returnCorrectCard(3)}
       </Row>
-      <Row>
+      <Row className={planInfoClass.rowSwitchSkin}>
         <Col>
           <Form.Label htmlFor="custom-switch">Monthly</Form.Label>
         </Col>
@@ -46,27 +47,10 @@ function PlanInfoComponent(props: any) {
           <Form.Label htmlFor="custom-switch">Yearly</Form.Label>
         </Col>
       </Row>
-      <Row>
-        <Col className={planInfoClass.containerBackButtonStepTwo}>
-          <Button
-            className={`${planInfoClass.backButtonStepTwo} `}
-            type="button"
-            onClick={(e) => {
-              // props.subscribeHandeler(1);
-            }}
-          >
-            Go Back
-          </Button>
-        </Col>
-        <Col className={planInfoClass.containerSubmitButtonStepTwo}>
-          <Button
-            className={planInfoClass.submitButtonStepTwoStyle}
-            type="submit"
-          >
-            Next Step
-          </Button>
-        </Col>
-      </Row>
+      <ButtonHandlerComponent
+        step={"planInfo"}
+        subscribeHandeler={props.subscribeHandeler}
+      />
     </>
   );
 }

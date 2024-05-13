@@ -16,6 +16,7 @@ function SideBarCardComponent(props: any) {
               className={`${sideBarClass.sideBarCardListSkin} d-flex justify-content-between align-items-start`}
             >
               <Button
+                id="personalInfoButton"
                 variant="info"
                 className={`${sideBarClass.sideBarCardButtonSkin}  ${
                   props.step.step == "personalInfo" ? props.step.style : ""
@@ -38,6 +39,7 @@ function SideBarCardComponent(props: any) {
               className={`${sideBarClass.sideBarCardListSkin} d-flex justify-content-between align-items-start`}
             >
               <Button
+                id="planInfoButton"
                 variant="info"
                 className={`${sideBarClass.sideBarCardButtonSkin} ${
                   props.step.step == "planInfo" ? props.step.style : ""

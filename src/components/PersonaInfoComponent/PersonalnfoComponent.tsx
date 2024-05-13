@@ -8,6 +8,7 @@ import * as formik from "formik";
 import * as yup from "yup";
 import PersonalInfoClass from "./PersonalnfoComponent.module.scss";
 import { Container } from "react-bootstrap";
+import ButtonHandlerComponent from "../ButtonHandlerComponent/ButtonHandlerComponent";
 
 function PersonalInfoComponent(props: any) {
   const { Formik } = formik;
@@ -28,7 +29,7 @@ function PersonalInfoComponent(props: any) {
         validationSchema={schema}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-          // props.subscribeHandeler(2);
+          document.getElementById("planInfoButton")?.click();
         }}
         initialValues={{
           name: "",
@@ -119,14 +120,15 @@ function PersonalInfoComponent(props: any) {
                 </InputGroup>
               </Form.Group>
             </Row>
-            <Row className={PersonalInfoClass.rowSubmitButton}>
+            {/* <Row className={PersonalInfoClass.rowSubmitButton}>
               <Button
                 className={PersonalInfoClass.containerSubmitButton}
                 type="submit"
               >
                 Next Step
               </Button>
-            </Row>
+            </Row> */}
+            <ButtonHandlerComponent />
           </Form>
         )}
       </Formik>
