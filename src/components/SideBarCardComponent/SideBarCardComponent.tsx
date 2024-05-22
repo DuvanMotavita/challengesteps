@@ -41,11 +41,13 @@ function SideBarCardComponent(props: any) {
               <Button
                 id="planInfoButton"
                 variant="info"
+                type="submit"
+                form="my-form"
                 className={`${sideBarClass.sideBarCardButtonSkin} ${
                   props.step.step == "planInfo" ? props.step.style : ""
                 }`}
                 onClick={(e) => {
-                  props.subscribeHandeler(2);
+                  //props.subscribeHandeler(2);
                 }}
               >
                 2

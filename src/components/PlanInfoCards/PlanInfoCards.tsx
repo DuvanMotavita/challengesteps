@@ -4,7 +4,7 @@ import Image from "react-bootstrap/Image";
 import ProIcon from "./CustomProIcon";
 import ArcadeIcon from "./CustomArcadeIcon";
 import AdvanceIcon from "./CustomAdvanceIcon";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function PlanInfoCards(props: any) {
   const [cardData, setCardData] = useState({
@@ -17,7 +17,8 @@ function PlanInfoCards(props: any) {
 
   useEffect(() => {
     subscribeCard(props.index);
-  }, []);
+  }, [props.planSelection]);
+
   const subscribeCard = (number: any) => {
     switch (number) {
       case 1:
@@ -25,9 +26,9 @@ function PlanInfoCards(props: any) {
           ...cardData,
           index: number,
           title: "Arcade",
-          amount: "$9/mo",
-          promotion: "2 months free",
-          isPromotion: false,
+          amount: !props.planSelection ? "$9/mo" : "$90/yr",
+          promotion: props.planSelection ? "2 months free" : "",
+          isPromotion: props.planSelection ? true : false,
         });
         break;
       case 2:
@@ -35,9 +36,9 @@ function PlanInfoCards(props: any) {
           ...cardData,
           index: number,
           title: "Advance",
-          amount: "$12/mo",
-          promotion: "2 months free",
-          isPromotion: false,
+          amount: !props.planSelection ? "$12/mo" : "$120/yr",
+          promotion: props.planSelection ? "2 months free" : "",
+          isPromotion: props.planSelection ? true : false,
         });
         break;
       default:
@@ -45,9 +46,9 @@ function PlanInfoCards(props: any) {
           ...cardData,
           index: number,
           title: "Pro",
-          amount: "$15/mo",
-          promotion: "2 months free",
-          isPromotion: false,
+          amount: !props.planSelection ? "$15/mo" : "$150/yr",
+          promotion: props.planSelection ? "2 months free" : "",
+          isPromotion: props.planSelection ? true : false,
         });
         break;
     }
@@ -69,8 +70,13 @@ function PlanInfoCards(props: any) {
     }
   };
   return (
-    <Card className={planInfoCard.cardSkinStepTwo}>
-      {selectIcon(props.index)}
+    <Card
+      onClick={(e) => {
+        console.log("Hello");
+      }}
+      className={planInfoCard.cardSkinStepTwo}
+    >
+      <div className={planInfoCard.iconCardSkin}>{selectIcon(props.index)}</div>
       <Card.Body>
         <Card.Title>{cardData.title}</Card.Title>
         <Card.Text>{cardData.amount}</Card.Text>

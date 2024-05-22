@@ -5,7 +5,9 @@ import PlanInfoComponent from "../PlanInfoComponent/PlanInfoComponent";
 function SelectionCardComponent(props: any) {
   return (
     <>
-      {props.step.step == "personalInfo" && <PersonalInfoComponent />}
+      {props.step.step == "personalInfo" && (
+        <PersonalInfoComponent subscribeHandeler={props.subscribeHandeler} />
+      )}
       {props.step.step == "planInfo" && <PlanInfoComponent />}
     </>
   );

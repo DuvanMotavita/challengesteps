@@ -5,6 +5,7 @@ import SideBarCardComponent from "../SideBarCardComponent/SideBarCardComponent";
 import PersonalInfoComponent from "../PersonaInfoComponent/PersonalnfoComponent";
 import PlanInfoComponent from "../PlanInfoComponent/PlanInfoComponent";
 import SelectionCardComponent from "../SelectionCardComponent/SelectionCardComponent";
+import ButtonHandlerComponent from "../ButtonHandlerComponent/ButtonHandlerComponent";
 
 function CardSection() {
   const [step, setStep] = useState({
@@ -29,7 +30,10 @@ function CardSection() {
   const widgetHandler = () => {
     return (
       <>
-        <SelectionCardComponent step={step} />
+        <SelectionCardComponent
+          step={step}
+          subscribeHandeler={subscribeHandeler}
+        />
       </>
     );
   };
@@ -46,7 +50,13 @@ function CardSection() {
           </Col>
           <Col>
             {" "}
-            <Card.Body>{widgetHandler()}</Card.Body>
+            <Card.Body>
+              {widgetHandler()}
+              <ButtonHandlerComponent
+                step={step.step}
+                subscribeHandeler={subscribeHandeler}
+              />
+            </Card.Body>
           </Col>
         </Row>
       </Card>

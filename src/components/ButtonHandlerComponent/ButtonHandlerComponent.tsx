@@ -11,9 +11,7 @@ function ButtonHandlerComponent(props: any) {
             className={`${buttonInfoClass.backButtonStepTwo} `}
             type="button"
             onClick={(e) => {
-              props.step == "planInfo"
-                ? document.getElementById("personalInfoButton")?.click()
-                : false;
+              props.step == "planInfo" ? props.subscribeHandeler(1) : false;
             }}
           >
             Go Back
@@ -24,6 +22,7 @@ function ButtonHandlerComponent(props: any) {
         <Button
           className={buttonInfoClass.submitButtonStepTwoStyle}
           type="submit"
+          form="my-form"
         >
           Next Step
         </Button>

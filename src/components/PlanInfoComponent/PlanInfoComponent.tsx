@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -12,11 +12,16 @@ import PlanInfoCards from "../PlanInfoCards/PlanInfoCards";
 import ButtonHandlerComponent from "../ButtonHandlerComponent/ButtonHandlerComponent";
 
 function PlanInfoComponent(props: any) {
+  const [planSelection, setPlanSelection] = useState(false);
+
   const returnCorrectCard = (cardNumber: any) => {
     return (
       <>
         <Col>
-          <PlanInfoCards index={cardNumber}></PlanInfoCards>
+          <PlanInfoCards
+            index={cardNumber}
+            planSelection={planSelection}
+          ></PlanInfoCards>
         </Col>
       </>
     );
@@ -38,19 +43,18 @@ function PlanInfoComponent(props: any) {
           <Form.Label htmlFor="custom-switch">Monthly</Form.Label>
         </Col>
         <Col>
-          <Form.Check // prettier-ignore
+          <Form.Switch // prettier-ignore
             type="switch"
             id="custom-switch"
+            onClick={(e) => {
+              setPlanSelection(e.target.checked);
+            }}
           />
         </Col>
         <Col>
           <Form.Label htmlFor="custom-switch">Yearly</Form.Label>
         </Col>
       </Row>
-      <ButtonHandlerComponent
-        step={"planInfo"}
-        subscribeHandeler={props.subscribeHandeler}
-      />
     </>
   );
 }

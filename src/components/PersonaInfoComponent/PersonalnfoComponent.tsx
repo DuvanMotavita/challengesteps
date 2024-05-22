@@ -39,7 +39,8 @@ function PersonalInfoComponent(props: any) {
           await new Promise((r) => setTimeout(r, 500));
           personal.setPersonalInfoStorage(values);
           personal.getPersonalInfoStorage();
-          document.getElementById("planInfoButton")?.click();
+          props.subscribeHandeler(2);
+          //document.getElementById("planInfoButton")?.click();
         }}
         initialValues={{
           name: personalData.name,
@@ -48,7 +49,7 @@ function PersonalInfoComponent(props: any) {
         }}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
-          <Form noValidate onSubmit={handleSubmit}>
+          <Form noValidate id="my-form" onSubmit={handleSubmit}>
             <Row className={PersonalInfoClass.rowSkin}>
               {" "}
               <Form.Group
@@ -130,7 +131,6 @@ function PersonalInfoComponent(props: any) {
                 </InputGroup>
               </Form.Group>
             </Row>
-            <ButtonHandlerComponent />
           </Form>
         )}
       </Formik>
