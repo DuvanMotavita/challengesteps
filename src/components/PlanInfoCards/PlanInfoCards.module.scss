@@ -2,6 +2,10 @@
     padding: 0px;
     cursor: pointer;
   }
-  .iconCardSkin{
+.cardSkinStepTwo:focus,.cardSkinStepTwo:active,.cardSkinStepTwo:hover{
+  border: solid #B1A3C8 2.5px ;
+  background: #F6F5F6;
+} 
+.iconCardSkin{
     margin: 1rem;
-  }
+}

@@ -47,7 +47,7 @@ function SideBarCardComponent(props: any) {
                   props.step.step == "planInfo" ? props.step.style : ""
                 }`}
                 onClick={(e) => {
-                  //props.subscribeHandeler(2);
+                  // props.subscribeHandeler(2);
                 }}
               >
                 2
@@ -65,9 +65,11 @@ function SideBarCardComponent(props: any) {
             >
               <Button
                 variant="info"
-                className={sideBarClass.sideBarCardButtonSkin}
+                className={`${sideBarClass.sideBarCardButtonSkin} ${
+                  props.step.step == "pickAddOns" ? props.step.style : ""
+                }`}
                 onClick={(e) => {
-                  props.subscribeHandeler(3);
+                  // props.subscribeHandeler(3);
                 }}
               >
                 3
@@ -85,9 +87,11 @@ function SideBarCardComponent(props: any) {
             >
               <Button
                 variant="info"
-                className={sideBarClass.sideBarCardButtonSkin}
+                className={`${sideBarClass.sideBarCardButtonSkin} ${
+                  props.step.step == "summaryInfo" ? props.step.style : ""
+                }`}
                 onClick={(e) => {
-                  props.subscribeHandeler(4);
+                  //props.subscribeHandeler(4);
                 }}
               >
                 4

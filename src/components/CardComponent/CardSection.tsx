@@ -21,6 +21,12 @@ function CardSection() {
       case 2:
         setStep({ ...step, step: "planInfo" });
         break;
+      case 3:
+        setStep({ ...step, step: "pickAddOns" });
+        break;
+      case 4:
+        setStep({ ...step, step: "summaryInfo" });
+        break;
       default:
         setStep({ ...step, step: "personalInfo" });
         break;

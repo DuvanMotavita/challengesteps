@@ -57,13 +57,13 @@ function PlanInfoCards(props: any) {
   const selectIcon = (iconNumber: Number) => {
     switch (iconNumber) {
       case 1:
-        return <ProIcon />;
-        break;
-      case 2:
         return <ArcadeIcon />;
         break;
-      case 3:
+      case 2:
         return <AdvanceIcon />;
+        break;
+      case 3:
+        return <ProIcon />;
         break;
       default:
         break;
